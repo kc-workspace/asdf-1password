@@ -1,0 +1,66 @@
+---
+## Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v2.1.0
+_src_path: gh:kc-workspace/asdf-plugin-template.git
+addon_yaml:
+    archive: true
+    checksum: false
+    download: true
+    fetch: true
+    git: false
+    github: false
+    gpg: true
+    help: true
+    install: true
+    package: true
+    python: false
+    system: true
+    tags: true
+    version: false
+app_desc: saves and fills your passwords
+app_name: op
+app_repo: ''
+app_type: standalone
+app_website: https://1password.com/
+archive_conf_path: ''
+archive_conf_strip: 0
+archive_enabled: true
+archive_regex: (\.tar\.gz|\.tgz|\.zip)$
+checksum_enabled: false
+custom_bin_paths: bin
+custom_non_stable_version: (-src|-dev|-latest|-stm|[-\.]rc|-alpha|-beta|[-\.]pre|-next|snapshot|master)
+custom_require_commands: ''
+download_url: https://cache.agilebits.com/dist/1P/op2/pkg/v{version}/op_{os}_{arch}_v{version}.{ext}
+gpg_enabled: true
+gpg_public_key_email: codesign@1password.com
+gpg_public_key_fingerprint: ''
+gpg_public_key_keyid: ''
+gpg_public_key_type: email
+gpg_sig_url: ''
+install_map_enabled: true
+install_map_method: move
+install_map_yaml:
+    op: bin/op
+package_conf_path: op.pkg/Payload
+package_enabled: true
+package_regex: (\.pkg)$
+plugin_author: Kamontat Chantrachirathumrong
+plugin_name: asdf-1password
+plugin_org: kc-workspace
+plugin_repo: https://github.com/kc-workspace/asdf-1password.git
+source_enabled: false
+sys_arch_enabled: true
+sys_arch_yaml:
+    aarch64*: arm64
+    arm*: arm
+    x86_64: amd64
+sys_ext_default: zip
+sys_ext_enabled: true
+sys_ext_yaml:
+    apple-*: pkg
+sys_os_enabled: true
+sys_os_yaml:
+    darwin: apple
+test_cmd_args: --version
+version_file_enabled: false
+version_prefix: v

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+## Download the source code or binary for a specific version of a tool
+## to a specified location.
+## https://asdf-vm.com/plugins/create.html#bin-download
+
+## -----------------------
+## Customization functions
+
+# kc_asdf_main() {
+#   local ns="$1"
+#   shift
+#
+#   return 0
+# }
+
+_kc_asdf_custom_gpg_filepath() {
+  local ns="setup-gpg.custom"
+  local filepath="$1" tmpdir filename
+  tmpdir="$(kc_asdf_temp_dir)"
+  filename="$KC_ASDF_APP_NAME"
+
+  ## Because signature file is zip in downloaded archive
+  kc_asdf_debug "$ns" "extract archive to %s directory" "$tmpdir"
+  kc_asdf_archive_extract "$filepath" "$tmpdir"
+
+  printf "%s/%s" "$tmpdir" "$filename"
+}
+
+## -----------------------
+
+set -euo pipefail
+
+export KC_ASDF_PLUGIN_ENTRY_PATH=${BASH_SOURCE[0]}
+export KC_ASDF_PLUGIN_ENTRY_NAME
+KC_ASDF_PLUGIN_ENTRY_NAME="$(basename "$KC_ASDF_PLUGIN_ENTRY_PATH")"
+export KC_ASDF_PLUGIN_PATH
+KC_ASDF_PLUGIN_PATH=$(dirname "$(dirname "$KC_ASDF_PLUGIN_ENTRY_PATH")")
+
+# shellcheck source-path=SCRIPTDIR/../lib/commands.sh
+source "$KC_ASDF_PLUGIN_PATH/lib/commands.sh" "$@"
