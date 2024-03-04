@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/kc-workspace/asdf-1password/compare/v1.0.1...v1.0.2) (2024-03-04)
+
+
+### Performance Improvements
+
+* update plugin from template [autocommit] ([10a7237](https://github.com/kc-workspace/asdf-1password/commit/10a7237fa739fe05c8e613c6f7313f6972a4752d))
+* update plugin from template [autocommit] ([26aa1b9](https://github.com/kc-workspace/asdf-1password/commit/26aa1b948e72fd4bf71cde7df413814538ab0d32))
+
 ## [1.0.1](https://github.com/kc-workspace/asdf-1password/compare/v1.0.0...v1.0.1) (2023-11-06)
 
 
