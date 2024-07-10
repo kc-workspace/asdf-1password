@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-kc_asdf_load_addon "install" \
+kc_asdf_load_addon "download" "install" \
   "system"
 
 __asdf_bin() {
@@ -31,9 +31,12 @@ __asdf_bin() {
     install_map=(
       "op:bin/op"
     )
-    local vars=("version=$version")
-    [ -n "${KC_ASDF_OS:-}" ] && vars+=("os=$KC_ASDF_OS")
-    [ -n "${KC_ASDF_ARCH:-}" ] && vars+=("arch=$KC_ASDF_ARCH")
+    local vars=(
+      "version=$version"
+      "channel=$(kc_asdf_download_channel "$version")"
+      "os=$KC_ASDF_OS"
+      "arch=$KC_ASDF_ARCH"
+    )
     [ -n "${KC_ASDF_EXT:-}" ] && vars+=("ext=$KC_ASDF_EXT")
     if command -v kc_asdf_version_parser >/dev/null; then
       local major minor patch
@@ -82,4 +85,9 @@ __asdf_bin() {
       return 1
     fi
   done
+
+  command -v _kc_asdf_custom_post_install >/dev/null &&
+    kc_asdf_debug "$ns" "developer has post install source function defined" &&
+    _kc_asdf_custom_post_install "$indir" "$outdir"
+
 }
