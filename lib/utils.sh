@@ -4,6 +4,8 @@
 ## This will load on very beginning of the scripts
 ## so make sure that you only define functions
 
+kc_asdf_load_addon "system"
+
 _kc_asdf_custom_tags() {
   curl -sSL 'https://app-updates.agilebits.com/product_history/CLI2' |
     grep -oE 'v[0-9.a-z-]*\.pkg' |
