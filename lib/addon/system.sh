@@ -32,16 +32,22 @@ kc_asdf_get_os() {
 ## Is current OS is macOS
 ## usage: `kc_asdf_is_darwin`
 kc_asdf_is_darwin() {
-  local os="${KC_ASDF_OS}" custom="apple"
+  local ns="os.addon"
+  local os custom="apple"
+  os="$(kc_asdf_get_os)"
   local darwin="${custom:-darwin}"
+  kc_asdf_debug "$ns" "checking current os (%s) should be %s" "$os" "$darwin"
   [[ "$os" == "$darwin" ]]
 }
 
 ## Is current OS is LinuxOS
 ## usage: `kc_asdf_is_linux`
 kc_asdf_is_linux() {
-  local os="${KC_ASDF_OS}" custom=""
+  local ns="os.addon"
+  local os custom=""
+  os="$(kc_asdf_get_os)"
   local linux="${custom:-linux}"
+  kc_asdf_debug "$ns" "checking current os (%s) should be %s" "$os" "$linux"
   [[ "$os" == "$linux" ]]
 }
 
@@ -87,7 +93,11 @@ kc_asdf_get_ext() {
     return 0
   fi
 
-  local key="$KC_ASDF_OS-$KC_ASDF_ARCH"
+  local os arch
+  os="$(kc_asdf_get_os)"
+  arch="$(kc_asdf_get_arch)"
+
+  local key="$os-$arch"
   ext="zip"
   case "$key" in
   apple-*)
