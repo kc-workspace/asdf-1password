@@ -8,7 +8,7 @@ __asdf_bin() {
   local ns="$1"
   shift
 
-  local query="$1" def_query="[0-9]"
+  local query="${1:-[0-9]}" def_query="[0-9]"
   if kc_asdf_enabled_feature github_latest && [[ "$query" == "$def_query" ]]; then
     command -v kc_asdf_github_latest >/dev/null &&
       kc_asdf_debug "$ns" "try get latest version from github" &&
